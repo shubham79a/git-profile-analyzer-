@@ -14,8 +14,7 @@ const Home = () => {
 
   return (
     <div>
-
-      <div className='mx-auto mt-10 lg:max-w-6xl md:max-w-3xl p-4'>
+      <div className='mx-auto mt-10 lg:max-w-6xl md:max-w-3xl p-4 min-h-[75vh]'>
         <div className='flex flex-col justify-between  gap-8 items-end'>
           {/* <Label>Accept terms and conditions</Label> */}
           <Input placeholder='Write your github profile' className='w-full '
@@ -25,7 +24,6 @@ const Home = () => {
           <Button onClick={() => navigate(`/user/${username}`)} className=''>Search</Button>
         </div>
       </div>
-
     </div >
   )
 }

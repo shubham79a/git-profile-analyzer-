@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useRef, useContext } from 'react';
 import axios from 'axios';
 import {
     ResponsiveContainer,
@@ -13,6 +13,7 @@ import { useParams } from 'react-router-dom';
 import { format, addDays, differenceInDays, subDays } from 'date-fns';
 import { Button } from '@/components/ui/button';
 import html2canvas from 'html2canvas';
+import { AppContext } from '@/context/AppContext';
 
 interface Commit {
     commit: {
@@ -36,9 +37,19 @@ const UserAllCommitsGraph: React.FC = () => {
     const chartRef = useRef<HTMLDivElement>(null);
 
     const fetchUserCommits = async () => {
+        // const context = useContext(AppContext);
+        // if (!context) return null;
+        // const { user, repos } = context;
+
         setLoading(true);
         try {
-            const reposRes = await axios.get(`https://api.github.com/users/${username}/repos`);
+            const reposRes = await axios.get(`https://api.github.com/users/${username}/repos`,
+                {
+                    headers: {
+                        Authorization: `token ${import.meta.env.VITE_GITHUB_TOKEN}`,
+                    },
+                }
+            );
             const repos = reposRes.data;
 
             const allDates: string[] = [];
@@ -49,7 +60,12 @@ const UserAllCommitsGraph: React.FC = () => {
                     const perPage = 100;
                     while (true) {
                         const commitsRes = await axios.get(
-                            `https://api.github.com/repos/${username}/${repo.name}/commits?per_page=${perPage}&page=${page}`
+                            `https://api.github.com/repos/${username}/${repo.name}/commits?per_page=${perPage}&page=${page}`,
+                            {
+                                headers: {
+                                    Authorization: `token ${import.meta.env.VITE_GITHUB_TOKEN}`,
+                                },
+                            },
                         );
                         const commits = commitsRes.data;
 

@@ -9,6 +9,7 @@ import Home from './pages/Home'
 import { ThemeProvider } from './components/theme-provider'
 import UserHome from './pages/UserHome'
 import RepoCommitsChart from './pages/RepoCommitsChart'
+import Footer from './components/Footer'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -20,8 +21,9 @@ function App() {
         <Routes>
           <Route element={<Home />} path="/" />
           <Route element={<UserHome />} path='/user/:username' />
-          <Route element={<RepoCommitsChart /> } path='/user/:username/:repo' />
+          <Route element={<RepoCommitsChart />} path='/user/:username/:repo' />
         </Routes>
+        <Footer />
       </div>
     </>
   )

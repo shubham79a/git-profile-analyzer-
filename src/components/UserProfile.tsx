@@ -7,7 +7,7 @@ function UserProfile() {
     const { user } = context;
     return (
         <div>
-            <div className='flex flex-col p-4'>
+            <div className='flex flex-col p-4 mt-5'>
                 <div className=''>
                     <img className='rounded-full' src={user?.avatar_url} alt="" />
                 </div>

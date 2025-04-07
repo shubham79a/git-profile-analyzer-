@@ -15,13 +15,6 @@ const UserHome = () => {
   if (!context) return null;
   const { user, repos } = context;
 
-  console.log(user);
-
-
-
-  const sdsf = () => {
-    console.log(user)
-  }
 
 
   return (
@@ -43,7 +36,7 @@ const UserHome = () => {
         <div className='max-sm:hidden sm:col-span-1 '>
           <UserProfile />
         </div>
-        <div className='sm:col-span-3 max-sm:w-full w-full flex flex-col gap-10'>
+        <div className='sm:col-span-3 max-sm:w-full w-full flex flex-col '>
           <div>
             <UserAllCommitsGraph />
           </div>

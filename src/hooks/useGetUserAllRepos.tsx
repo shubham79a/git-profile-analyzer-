@@ -17,7 +17,12 @@ const useGetAllRepos = () => {
 
       try {
         const response = await axios.get(
-          `https://api.github.com/users/${username}/repos`
+          `https://api.github.com/users/${username}/repos`,
+          {
+            headers: {
+              Authorization: `token ${import.meta.env.VITE_GITHUB_TOKEN}`,
+            },
+          }
         );
         setRepos(response.data);
       } catch (error) {

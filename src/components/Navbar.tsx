@@ -5,7 +5,7 @@ import { Menu, User, User2Icon, UserSquare, UserSquareIcon } from 'lucide-react'
 
 const Navbar = () => {
   return (
-    <nav className=" p-4 bg-background/50 sticky top-0 backdrop-blur border-b z-10">
+    <nav className=" px-4 py-2 bg-background/50 sticky top-0 backdrop-blur border-b z-10">
 
       <div className="container mx-auto flex justify-between items-center ">
         <Link to="/">

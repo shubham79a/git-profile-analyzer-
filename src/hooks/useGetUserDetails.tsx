@@ -13,7 +13,13 @@ const useGetUserDetails = () => {
 
         const fetchUserDetails = async () => {
             try {
-                const response = await axios.get(`https://api.github.com/users/${username}`);
+                const response = await axios.get(`https://api.github.com/users/${username}`,
+                    {
+                        headers: {
+                            Authorization: `token ${import.meta.env.VITE_GITHUB_TOKEN}`,
+                        },
+                    }
+                );
                 setUser(response.data); // ✅ set only the data
             } catch (error) {
                 console.error("Failed to fetch user details:", error);
