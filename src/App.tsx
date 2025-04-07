@@ -6,6 +6,9 @@ import { Button } from './components/ui/button'
 import { Route, Routes } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Home from './pages/Home'
+import { ThemeProvider } from './components/theme-provider'
+import UserHome from './pages/UserHome'
+import RepoCommitsChart from './pages/RepoCommitsChart'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -16,6 +19,8 @@ function App() {
         <Navbar />
         <Routes>
           <Route element={<Home />} path="/" />
+          <Route element={<UserHome />} path='/user/:username' />
+          <Route element={<RepoCommitsChart /> } path='/user/:username/:repo' />
         </Routes>
       </div>
     </>
