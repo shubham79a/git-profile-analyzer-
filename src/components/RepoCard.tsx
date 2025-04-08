@@ -18,7 +18,7 @@ const RepoCard: React.FC<{ repo: RepoCardProps["repo"] }> = ({ repo }) => {
     const navigate = useNavigate();
     const context = useContext(AppContext);
     if (!context) return null;
-    const { user } = context;
+    const { user } = context as { user: { login: string } | null };
 
     return (
         <div>

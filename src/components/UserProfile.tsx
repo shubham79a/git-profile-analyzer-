@@ -1,8 +1,16 @@
 import { AppContext } from '@/context/AppContext';
 import React, { useContext } from 'react'
 
+interface User {
+    avatar_url: string;
+    name: string;
+    html_url: string;
+    login: string;
+    bio: string;
+}
+
 function UserProfile() {
-    const context = useContext(AppContext);
+    const context = useContext(AppContext) as { user: User } | null;
     if (!context) return null;
     const { user } = context;
     return (

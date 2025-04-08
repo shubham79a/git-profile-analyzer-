@@ -5,11 +5,11 @@ import {
     LineChart, Line, XAxis, YAxis, Tooltip, CartesianGrid, ResponsiveContainer,
 } from 'recharts';
 import { Button } from '@/components/ui/button';
-import html2canvas from 'html2canvas';
+// import html2canvas from 'html2canvas';
 import useGetUserAllCommits from '@/hooks/useGetUserAllCommits';
 import { Popover, PopoverContent, PopoverTrigger } from './ui/popover';
 import { Avatar } from './ui/avatar';
-import { Filter, FilterIcon, MenuIcon } from 'lucide-react';
+import { FilterIcon } from 'lucide-react';
 
 
 const UserAllCommitsGraph: React.FC = () => {
@@ -19,16 +19,16 @@ const UserAllCommitsGraph: React.FC = () => {
 
     const { filteredCommits, total, loading } = useGetUserAllCommits(username || '', filter);
 
-    const handleExport = () => {
-        if (chartRef.current) {
-            html2canvas(chartRef.current).then(canvas => {
-                const link = document.createElement('a');
-                link.download = `${username}-all-commits.png`;
-                link.href = canvas.toDataURL();
-                link.click();
-            });
-        }
-    };
+    // const handleExport = () => {
+    //     if (chartRef.current) {
+    //         html2canvas(chartRef.current).then(canvas => {
+    //             const link = document.createElement('a');
+    //             link.download = `${username}-all-commits.png`;
+    //             link.href = canvas.toDataURL();
+    //             link.click();
+    //         });
+    //     }
+    // };
 
     return (
         <div className="sm:px-4">

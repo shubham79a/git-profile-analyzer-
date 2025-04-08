@@ -16,11 +16,11 @@ const UserHome = () => {
   // if (!context) return null;
   // const { user } = context;
 
-  useGetUserAllCommits()
+  // useGetUserAllCommits()
 
-  const context = useContext(AppContext);
-  if (!context) return null;
-  const { user, repos } = context;
+  // const context = useContext(AppContext);
+  // if (!context) return null;
+  // const { user, repos } = context;
 
 
 

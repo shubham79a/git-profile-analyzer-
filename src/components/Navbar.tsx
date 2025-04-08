@@ -16,7 +16,7 @@ import { Button } from "./ui/button";
 const Navbar = () => {
   const context = useContext(AppContext);
   if (!context) return null;
-  const { user, repos } = context;
+  const { user, repos } = context as { user: { login?: string; avatar_url?: string; name?: string; html_url?: string; bio?: string } | null; repos: any };
   const navigate = useNavigate()
 
   const handleLogoutUser = () => {
