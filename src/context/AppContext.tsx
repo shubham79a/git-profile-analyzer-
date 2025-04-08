@@ -1,11 +1,19 @@
 import React, { createContext, useState, useEffect, ReactNode } from "react";
 import { CommitDayData } from "@/hooks/useGetUserAllCommits";
 
-interface Repo {
-  [key: string]: any;
+// --- Exported Repo type used across the app
+export interface Repo {
+  name: string;
+  description: string;
+  html_url: string;
+  stargazers_count: number;
+  language: string;
+  forks_count: number;
+  updated_at: string;
 }
 
-interface AppContextType {
+// --- Exported Context Type for usage in components
+export interface AppContextType {
   username: string;
   setUsername: (username: string) => void;
   user: object | null;
@@ -17,32 +25,41 @@ interface AppContextType {
   clearUser: () => void;
 }
 
+// --- Create the Context
 export const AppContext = createContext<AppContextType | undefined>(undefined);
 
+// --- Provider Component
 interface Props {
   children: ReactNode;
 }
 
 const AppContextProvider: React.FC<Props> = ({ children }) => {
-  const [username, setUsername] = useState<string>(() => localStorage.getItem("devtrace_username") || "");
+  const [username, setUsername] = useState<string>(
+    () => localStorage.getItem("devtrace_username") || ""
+  );
+
   const [user, setUser] = useState<object | null>(() => {
     const stored = localStorage.getItem("devtrace_user");
     return stored ? JSON.parse(stored) : null;
   });
+
   const [repos, setRepos] = useState<Repo[]>(() => {
     const stored = localStorage.getItem("devtrace_repos");
     return stored ? JSON.parse(stored) : [];
   });
+
   const [userCommits, setUserCommits] = useState<CommitDayData[] | null>(() => {
     const stored = localStorage.getItem("devtrace_commits");
     return stored ? JSON.parse(stored) : null;
   });
 
-  // Sync to localStorage
+  // --- Sync with LocalStorage
   useEffect(() => {
-    username
-      ? localStorage.setItem("devtrace_username", username)
-      : localStorage.removeItem("devtrace_username");
+    if (username) {
+      localStorage.setItem("devtrace_username", username);
+    } else {
+      localStorage.removeItem("devtrace_username");
+    }
   }, [username]);
 
   useEffect(() => {
