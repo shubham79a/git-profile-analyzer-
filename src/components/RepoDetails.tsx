@@ -25,7 +25,7 @@ const RepoDetails: React.FC<Props> = ({ repoDetails }) => {
                     href={repoDetails?.html_url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-lg font-semibold hover:underline"
+                    className="text-lg font-semibold hover:underline hover:text-violet-400"
                 >
                     {repoDetails?.name}
                 </a>
