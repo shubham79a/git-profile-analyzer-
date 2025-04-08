@@ -6,8 +6,17 @@ import { AppContext } from '@/context/AppContext';
 import useGetUserRepoDetails from '@/hooks/useGetUserRepoStats';
 import React, { useContext, useEffect } from 'react'
 
+export interface RepoDetails {
+  // existing properties
+  updated_at?: string; // The updated_at property is optional
+}
+
 const RepoStats = () => {
-  const { repoDetails, loading, error, commits } = useGetUserRepoDetails();
+  const { repoDetails: fetchedRepoDetails, loading, error, commits } = useGetUserRepoDetails();
+
+  const repoDetails = fetchedRepoDetails
+    ? { ...fetchedRepoDetails, updated_at: fetchedRepoDetails?.updated_at || new Date().toISOString() }
+    : null;
 
   const context = useContext(AppContext);
   if (!context) return null;
@@ -21,7 +30,7 @@ const RepoStats = () => {
 
       <div className='lg:grid grid-cols-4 lg:gap-6'>
         <div className='max-lg:hidden lg:col-span-1 max-lg:w-full'>
-          <RepoDetails repoDetails={repoDetails} />
+          {repoDetails && <RepoDetails repoDetails={repoDetails} />}
         </div>
         <div className='lg:col-span-3 lg:gap-6 max-lg:w-full w-full flex flex-col '>
           <div>

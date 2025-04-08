@@ -1,6 +1,6 @@
 import { AppContext } from '@/context/AppContext';
 import React, { useContext } from 'react';
-import { AppContextType } from '@/context/AppContext'; // Ensure this path is correct
+// import { AppContextType } from '@/context/AppContext'; // Ensure this path is correct
 import RepoCard from './RepoCard';
 
 type Repo = {
