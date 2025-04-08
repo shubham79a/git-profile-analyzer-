@@ -20,14 +20,14 @@ const useGetUserDetails = () => {
                         },
                     }
                 );
-                setUser(response.data); // ✅ set only the data
+                setUser(response.data);
             } catch (error) {
                 console.error("Failed to fetch user details:", error);
             }
         };
 
         fetchUserDetails();
-    }, [username]); // ✅ listen to username
+    }, [username]);
 };
 
 export default useGetUserDetails;
