@@ -14,7 +14,7 @@ interface RepoCardProps {
     };
 }
 
-const RepoCard: React.FC<{ repo: RepoCardProps["repo"] }> = ({ repo }) => {
+const RepoCard = ({ repo }: { repo: RepoCardProps["repo"] }) => {
     const navigate = useNavigate();
     const context = useContext(AppContext);
     if (!context) return null;

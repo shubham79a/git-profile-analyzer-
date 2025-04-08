@@ -12,7 +12,13 @@ export interface CommitDayData {
 type Filter = '7' | '30' | '365' | 'all';
 
 export const useGetUserAllCommits = (username: string, filter: Filter) => {
-    const { userCommits, setUserCommits } = useContext(AppContext);
+    const context = useContext(AppContext);
+
+    if (!context) {
+        throw new Error('useGetUserAllCommits must be used within an AppContextProvider');
+    }
+
+    const { userCommits, setUserCommits } = context;
     const [filteredCommits, setFilteredCommits] = useState<CommitDayData[]>([]);
     const [loading, setLoading] = useState(false);
 
