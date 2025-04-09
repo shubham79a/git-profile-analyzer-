@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 interface RepoDetails {
+  updated_at: string;
   name: string;
   full_name: string;
   description: string;

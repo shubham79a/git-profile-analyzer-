@@ -190,3 +190,23 @@
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.552 0.016 285.938);
 }
+
+
+
+
+@layer utilities {
+  .bg-grid-gradient {
+    background-image: 
+      linear-gradient(var(--grid-color, rgba(0, 0, 0, 0.1)) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid-color, rgba(0, 0, 0, 0.1)) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  .light .bg-grid-gradient {
+    --grid-color: rgba(0, 0, 0, 0.1);
+  }
+
+  .dark .bg-grid-gradient {
+    --grid-color: rgba(255, 255, 255, 0.1);
+  }
+}

@@ -22,7 +22,7 @@ const RepoStats: React.FC = () => {
   return (
     <div className="sm:px-[5%] max-sm:px-3 lg:px-[5%] min-h-[80vh]">
       {/* Status Message */}
-      <div className="py-4">
+      <div className="py-2">
         {loading && (
           <div className="text-sm text-blue-500 bg-blue-100 rounded-md px-4 py-2 w-fit">
             Fetching repository data...
@@ -33,11 +33,7 @@ const RepoStats: React.FC = () => {
             Failed to load repository details.
           </div>
         )}
-        {!loading && !error && repoDetails && (
-          <div className="text-sm text-green-600 bg-green-100 rounded-md px-4 py-2 w-fit">
-            Repository loaded successfully.
-          </div>
-        )}
+       
       </div>
 
       {/* Layout */}

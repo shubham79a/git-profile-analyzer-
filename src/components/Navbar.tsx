@@ -12,6 +12,7 @@ import {
 } from "./ui/sheet";
 import { AppContext } from "@/context/AppContext";
 import { Button } from "./ui/button";
+import { useTheme } from "next-themes";
 
 const Navbar = () => {
   const context = useContext(AppContext);
@@ -24,9 +25,12 @@ const Navbar = () => {
     navigate("/")
   }
 
+  const { theme } = useTheme();
+  const isDark = theme === 'dark';
+
   return (
-    <nav className=" py-2 bg-background/50 sticky top-0 backdrop-blur border-b z-10 sm:px-[5%] max-sm:px-3 lg:px-[5%] ">
-      <div className="container mx-auto flex justify-between items-center">
+    <nav className={`py-2 bg-background/50 sticky top-0 backdrop-blur border-b z-10 sm:px-[5%] max-sm:px-3 lg:px-[5%]    `}>
+      <div className="container mx-auto flex justify-between items-center  ">
         {/* <Link to={`${user ? `/${user?.login}}` : "/"}`>
           <div className="text-lg font-bold">DevTrace</div>
         </Link> */}
